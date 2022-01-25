@@ -1,4 +1,4 @@
-package com.sachzhong.util;
+package com.sachzhong.service;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.theory.Chord;
@@ -11,11 +11,11 @@ import java.util.List;
  * 作者： SachZhong 钟盛勤 项目名：MusicHubV2 版本： 1.0 创建时间：2020年1月23日 下午12:12:43
  * 类名：MelodyGenerateUtil.java 类说明:随机旋律生成工具
  */
-public class MelodyRandomGenerateUtil {
+public class MelodyRandomGenerateService {
 
 
 	// 音乐拍节奏生成工具类
-	private MusicPaiUtil musicPai = new MusicPaiUtil();
+	private MusicPaiService musicPai = new MusicPaiService();
 
 	// 获取旋律
 	public Pattern getMelody(Chord chord) {

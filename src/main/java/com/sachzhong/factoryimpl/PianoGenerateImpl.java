@@ -1,7 +1,7 @@
 package com.sachzhong.factoryimpl;
 
 import com.sachzhong.factory.PianoGenerate;
-import com.sachzhong.util.NoteGenerateUtil;
+import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.theory.Chord;
 
@@ -27,8 +27,8 @@ public class PianoGenerateImpl implements PianoGenerate {
 		Pattern pianoLeftPattern = new Pattern();
 		Pattern pianoRightPattern = new Pattern();
 
-		NoteGenerateUtil noteGenerateUtil = new NoteGenerateUtil();
-		List<String> NoteList = noteGenerateUtil.getNotes(chord);
+		NoteGenerateService noteGenerateService = new NoteGenerateService();
+		List<String> NoteList = noteGenerateService.getNotes(chord);
 
 		int index = (int) (Math.random() * 2 + 6);
 
@@ -63,9 +63,9 @@ public class PianoGenerateImpl implements PianoGenerate {
 		Pattern pianoLeftPattern = new Pattern();
 		Pattern pianoRightPattern = new Pattern();
 
-		NoteGenerateUtil noteGenerateUtil = new NoteGenerateUtil();
+		NoteGenerateService noteGenerateService = new NoteGenerateService();
 
-		List<String> NoteList = noteGenerateUtil.getNotes(chord);
+		List<String> NoteList = noteGenerateService.getNotes(chord);
 		
 		int index1 = (int) (Math.random() * 5);
 		int index2 = (index1 + 1) % 5;
@@ -102,8 +102,8 @@ public class PianoGenerateImpl implements PianoGenerate {
 		Pattern pianoLeftPattern = new Pattern();
 		Pattern pianoRightPattern = new Pattern();
 
-		NoteGenerateUtil noteGenerateUtil = new NoteGenerateUtil();
-		List<String> NoteList = noteGenerateUtil.getNotes(chord);
+		NoteGenerateService noteGenerateService = new NoteGenerateService();
+		List<String> NoteList = noteGenerateService.getNotes(chord);
 
 //		for (int i = 0; i < NoteList.size(); i++) {
 //			System.out.println("NoteList:"+NoteList.get(i));
@@ -114,7 +114,6 @@ public class PianoGenerateImpl implements PianoGenerate {
 
 		leftsong +=NoteList.get(5)+"i "+NoteList.get(6)+"q "+" Rq "+NoteList.get(6)+"i "+" Ri "+NoteList.get(6)+"i |";
 		rightsong +="Ri Rq "+NoteList.get(4)+"i "+NoteList.get(3)+"i Ri "+NoteList.get(0)+"i "+"Ri |" ;
-				
 
 
 		pianoLeftPattern.add(leftsong);

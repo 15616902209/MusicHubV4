@@ -36,5 +36,11 @@
 民族或音乐家个人的思想观念、审美理想、精神气质等内在特性的外部印记。
 曲风的形成是时代、民族或音乐家在对音乐的理解和实现上超越了幼稚阶段，摆脱了各种模式化的束缚，从而趋向或达到了成熟的标志。
 
-
+    public static final String[] MAJOR_KEY_SIGNATURES = new String[]{"Cb", "Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#"};
+    public static final String[] MINOR_KEY_SIGNATURES = new String[]{"Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#"};
+    public static final int KEYSIG_MIDPOINT = 7;
+    public static final String MAJOR_ABBR = "maj";
+    public static final String MINOR_ABBR = "min";
+    public static final char SHARP_CHAR = '#';
+    public static final char FLAT_CHAR = 'B';
 

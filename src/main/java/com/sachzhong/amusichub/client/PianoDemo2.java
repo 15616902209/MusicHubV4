@@ -4,9 +4,9 @@ package com.sachzhong.amusichub.client;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ArpeggioRandomGenerateUtil;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MelodyRandomGenerateUtil;
+import com.sachzhong.service.ArpeggioGenerateService;
+import com.sachzhong.service.ChordGenerateService;
+import com.sachzhong.service.MelodyRandomGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -31,8 +31,8 @@ public class PianoDemo2 {
 		//和声
 		String Chord_String = "I VI IV V ";
 		//String Chord_String = "VI IV V I";
-		ChordUtil chordUtil =new ChordUtil();
-		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "C", yinyu);
+		ChordGenerateService chordUtil = new ChordGenerateService();
+		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "G", yinyu);
 		 
 		Chord[] chords=cp.getChords();
 		
@@ -52,10 +52,10 @@ public class PianoDemo2 {
 		Pattern drum=new Pattern();
 		
 		//旋律生成工具
-		MelodyRandomGenerateUtil melodyGenerateUtil = new MelodyRandomGenerateUtil();
+		MelodyRandomGenerateService melodyGenerateUtil = new MelodyRandomGenerateService();
 		
 		//琶音生成工具
-		ArpeggioRandomGenerateUtil arpeggioGenerateUtil = new ArpeggioRandomGenerateUtil();
+		ArpeggioGenerateService arpeggioGenerateService = new ArpeggioGenerateService();
 
 		
 		//生成前奏 吉他独奏
@@ -100,7 +100,7 @@ public class PianoDemo2 {
 	
 				piano.add(chords[k]);
 				guitar.add(melodyGenerateUtil.getMelody(chords[k],yinyu+1));
-				musicbox.add(arpeggioGenerateUtil.getArpeggio(chords[k]));
+				musicbox.add(arpeggioGenerateService.getArpeggio(chords[k]));
 				violin.add(chordRoot+"2w");
 				
 

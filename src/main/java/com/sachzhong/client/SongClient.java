@@ -1,12 +1,12 @@
 package com.sachzhong.client;
 
 import com.sachzhong.instruments.Instruments;
+import com.sachzhong.service.ChordGenerateService;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MelodyGenerateUtil;
-import com.sachzhong.util.MusicPaiUtil;
-import com.sachzhong.util.NoteGenerateUtil;
+import com.sachzhong.service.MelodyGenerateService;
+import com.sachzhong.service.MusicPaiService;
+import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -30,7 +30,7 @@ public class SongClient {
 		int yinyu = 4;
 		
 		//和声
-		ChordUtil chordUtil =new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		//ChordProgression cp=chordUtil.getChordProgression("I IV V I", "Amin", yinyu);
 		ChordProgression cp=chordUtil.getChordProgression("I IV V I", "Amin", yinyu);
 		 
@@ -53,11 +53,11 @@ public class SongClient {
 		
 
 		
-		NoteGenerateUtil noteGenerateUtil=new NoteGenerateUtil();
+		NoteGenerateService noteGenerateService =new NoteGenerateService();
 		
-		MelodyGenerateUtil melodyGenerateUtil = new MelodyGenerateUtil();
+		MelodyGenerateService melodyGenerateService = new MelodyGenerateService();
 		
-		MusicPaiUtil musicPaiUtil =new MusicPaiUtil();
+		MusicPaiService musicPaiService =new MusicPaiService();
 		
 		for (int i = 0; i < 8; i++) {
 			
@@ -68,15 +68,15 @@ public class SongClient {
 				chordRoot=chordRoot.substring(0, 1);
 				
 				//List<String> mylist =  musicPaiUtil.getPai();
-				List<String> mylist =  musicPaiUtil.getPai44();
+				List<String> mylist =  musicPaiService.getPai44();
 				for (int j = 0; j < mylist.size(); j++) {
 
-						String note=noteGenerateUtil.getNode(chordRoot, yinyu);
+						String note= noteGenerateService.getNode(chordRoot, yinyu);
 						note+=mylist.get(j);
 						guitar.add(note);
 						
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist.get(j);
 						musicbox.add(note2);
 						
@@ -98,11 +98,11 @@ public class SongClient {
 					drum.add("C3h");
 					drum.add("C3h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu-1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu-1);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
@@ -116,11 +116,11 @@ public class SongClient {
 					bass.add(chordRoot+"2w");
 					drum.add("C3w");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
@@ -140,7 +140,7 @@ public class SongClient {
 					drum.add("C3q");
 					drum.add("C3h");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu+1));
+					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu+1));
 
 
 				}
@@ -159,7 +159,7 @@ public class SongClient {
 					drum.add("C3q");
 					drum.add("C3q");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu));
+					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
 
 
 				}

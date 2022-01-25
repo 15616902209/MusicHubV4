@@ -3,7 +3,7 @@ package com.sachzhong.song;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.MusicGenerateUtil;
+import com.sachzhong.service.MusicGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.ChordProgression;
@@ -57,7 +57,7 @@ public class GenerateBridge {
 			//生成间奏
 			public void generateBridge()
 			{
-				MusicGenerateUtil musicGenerate = new MusicGenerateUtil();
+				MusicGenerateService musicGenerate = new MusicGenerateService();
 				this.Bridge=musicGenerate.getSongChina(this.gechi,this.yinyu);
 			}
 		

@@ -4,8 +4,8 @@ package com.sachzhong.client;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.MelodyGenerateUtil;
-import com.sachzhong.util.NoteGenerateUtil;
+import com.sachzhong.service.MelodyGenerateService;
+import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
@@ -47,8 +47,8 @@ public static void main(String[] args) {
 		//6415
 		String[] chordpath=new String[]{"A","F","G","C"};
 		
-		NoteGenerateUtil noteGenerateUtil=new NoteGenerateUtil();
-		MelodyGenerateUtil melodyGenerateUtil=new MelodyGenerateUtil();
+		NoteGenerateService noteGenerateService =new NoteGenerateService();
+		MelodyGenerateService melodyGenerateService =new MelodyGenerateService();
 		int yinyu=5;
 		
 		//循环10次和弦走向
@@ -63,7 +63,7 @@ public static void main(String[] args) {
 				String node="C";
 
 				//根据和弦根音随机获取理查德式音符
-				Pattern pattern=melodyGenerateUtil.getMelodyBylichade(chordpath[i], (yinyu-1));
+				Pattern pattern= melodyGenerateService.getMelodyBylichade(chordpath[i], (yinyu-1));
 				song1.add(pattern);
 				
 				
@@ -71,7 +71,7 @@ public static void main(String[] args) {
 						
 						//吉他音轨随机获取音符
 						//根据和弦根音随机获取音符
-						node=noteGenerateUtil.getNode(chordpath[i], yinyu);
+						node= noteGenerateService.getNode(chordpath[i], yinyu);
 						node+="i";
 						song3.add(node);
 						

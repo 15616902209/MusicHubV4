@@ -3,9 +3,9 @@ package com.sachzhong.client;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MusicPaiUtil;
-import com.sachzhong.util.NoteGenerateUtil;
+import com.sachzhong.service.ChordGenerateService;
+import com.sachzhong.service.MusicPaiService;
+import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -29,7 +29,7 @@ public class ChordTestClient {
 		int yinyu = 4;
 		
 		//和声
-		ChordUtil chordUtil =new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp=chordUtil.getChordProgression("IV V III VI II V I", "C", yinyu);
 		 
 		Chord[] chords=cp.getChords();
@@ -41,9 +41,9 @@ public class ChordTestClient {
 		Pattern bass=new Pattern();
 		Pattern musicbox=new Pattern();
 		
-		NoteGenerateUtil noteGenerateUtil=new NoteGenerateUtil();
+		NoteGenerateService noteGenerateService =new NoteGenerateService();
 		
-		MusicPaiUtil musicPaiUtil =new MusicPaiUtil();
+		MusicPaiService musicPaiService =new MusicPaiService();
 		
 		for (int i = 0; i < chords.length; i++) {
 			
@@ -54,15 +54,15 @@ public class ChordTestClient {
 				chordRoot=chordRoot.substring(0, 1);
 				
 				//List<String> mylist =  musicPaiUtil.getPai();
-				List<String> mylist =  musicPaiUtil.getPai44();
+				List<String> mylist =  musicPaiService.getPai44();
 				for (int j = 0; j < mylist.size(); j++) {
 
-						String note=noteGenerateUtil.getNode(chordRoot, yinyu);
+						String note= noteGenerateService.getNode(chordRoot, yinyu);
 						note+=mylist.get(j);
 						guitar.add(note);
 						
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist.get(j);
 						musicbox.add(note2);
 						
@@ -71,11 +71,11 @@ public class ChordTestClient {
 				guitar.add(" | ");
 				musicbox.add(" | ");
 				
-				List<String> mylist2 =  musicPaiUtil.getPai();
+				List<String> mylist2 =  musicPaiService.getPai();
 				for (int j = 0; j < mylist2.size(); j++) {
 
 					//复调
-					String note2=noteGenerateUtil.getNode(chordRoot, yinyu-1);
+					String note2= noteGenerateService.getNode(chordRoot, yinyu-1);
 					note2+=mylist2.get(j);
 					violin.add(note2);
 

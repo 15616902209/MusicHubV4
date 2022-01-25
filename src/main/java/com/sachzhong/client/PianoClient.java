@@ -5,7 +5,7 @@ import com.sachzhong.factory.PianoGenerate;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ChordUtil;
+import com.sachzhong.service.ChordGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -28,7 +28,7 @@ public class PianoClient {
 
 		int speed=92;
 
-		 ChordUtil chordUtil =new ChordUtil();
+		 ChordGenerateService chordUtil = new ChordGenerateService();
 		
 		 ChordProgression cp=chordUtil.getChordProgression("VI IV V I", "C", 3);
 		 

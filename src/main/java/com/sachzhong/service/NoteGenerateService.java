@@ -1,4 +1,4 @@
-package com.sachzhong.util;
+package com.sachzhong.service;
 
 import org.jfugue.theory.Chord;
 import org.jfugue.theory.Note;
@@ -10,7 +10,7 @@ import java.util.List;
  * 作者： SachZhong 钟盛勤 项目名：MusicHubV2 版本： 1.0 创建时间：2020年1月23日 下午12:01:09
  * 类名：NoteGenerateUtil.java 类说明：音符生成工具
  */
-public class NoteGenerateUtil {
+public class NoteGenerateService {
 
 	// 基本音阶
 	private final String[] NodeArr = new String[] { "C", "D", "E", "F", "G", "A", "B" };
@@ -68,7 +68,7 @@ public class NoteGenerateUtil {
 		
 		String chordRoot=chord.getRoot().toString();
 		
-		int yinyu = Integer.valueOf(chordRoot.substring(1, 2));
+		int yinyu = Integer.parseInt(chordRoot.substring(1, 2));
 		
 		chordRoot=chordRoot.substring(0, 1);
 		

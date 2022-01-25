@@ -1,4 +1,4 @@
-package com.sachzhong.util;
+package com.sachzhong.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ instrument 乐器
 默认: Piano 
 
 */
-public class MusicPaiUtil {
+public class MusicPaiService {
 	
 	//获取4/4拍能组成的一拍，，以16分音符和八分音符为主
 		public List<String> getPai44By16()

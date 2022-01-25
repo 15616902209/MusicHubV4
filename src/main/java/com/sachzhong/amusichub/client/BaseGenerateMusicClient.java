@@ -26,7 +26,7 @@ public class BaseGenerateMusicClient {
 		
 //		instrumentList.add(Instruments.ELECTRIC_PIANO);
 		instrumentList.add(Instruments.Piano);
-//		instrumentList.add(Instruments.Guitar);
+		instrumentList.add(Instruments.Guitar);
 
 //		instrumentList.add(Instruments.VIOLIN);
 //		instrumentList.add(Instruments.ALTO_SAX);
@@ -34,9 +34,9 @@ public class BaseGenerateMusicClient {
 
 		
 		String chordpath ="I VI IV V";
-		String jidiao = "C";
+		String jidiao = "Dmin";
 		int yinyu=3;
-		int speed = 120;
+		int speed = 89;
 		
 		//构建生成音乐的类
 		BaseGenerateMusic musicSong =new BaseGenerateMusic(instrumentList,speed);

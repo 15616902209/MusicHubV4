@@ -1,4 +1,4 @@
-package com.sachzhong.util;
+package com.sachzhong.service;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.theory.Chord;
@@ -15,14 +15,14 @@ import java.util.List;
 *  类名：MelodyGenerateUtil.java
 *  类说明：旋律生成工具
 */
-public class MelodyGenerateUtil {
+public class MelodyGenerateService {
 	
 	//音符生成工具类
-	private NoteGenerateUtil noteGenerateUtil=new NoteGenerateUtil();
+	private NoteGenerateService noteGenerateService =new NoteGenerateService();
 	
 	
 	//音乐拍节奏生成工具类
-	private MusicPaiUtil musicPai=new MusicPaiUtil();
+	private MusicPaiService musicPai=new MusicPaiService();
 	
 
 	//根据根音和音域随机获取理查德式旋律
@@ -33,7 +33,7 @@ public class MelodyGenerateUtil {
 		//加入传入的是C,5 那返回 C5 E5 G5 B5 
 		List<String> nodeList=new ArrayList<String>();
 	
-		nodeList=noteGenerateUtil.getChordList(chordRoot, yinyu);
+		nodeList= noteGenerateService.getChordList(chordRoot, yinyu);
 		
 		//开始生成理查德式音符列表
 		
@@ -154,7 +154,7 @@ public class MelodyGenerateUtil {
 				else
 				{
 					//根据和弦根音随机获取音符
-					node=noteGenerateUtil.getNode(chordRoot, yinyu);
+					node= noteGenerateService.getNode(chordRoot, yinyu);
 					node+=jiezou.get(j);
 				}
 				
@@ -184,7 +184,7 @@ public class MelodyGenerateUtil {
 				else
 				{
 					//根据和弦根音随机获取音符
-					node=noteGenerateUtil.getNode(chordRoot, yinyu);
+					node= noteGenerateService.getNode(chordRoot, yinyu);
 					node+=jiezou.get(j);
 				}
 				
@@ -216,7 +216,7 @@ public class MelodyGenerateUtil {
 				else
 				{
 					//根据和弦根音随机获取音符
-					node=noteGenerateUtil.getNode(chordRoot, yinyu);
+					node= noteGenerateService.getNode(chordRoot, yinyu);
 					node+=jiezou.get(j);
 				}
 				

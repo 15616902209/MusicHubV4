@@ -4,9 +4,9 @@ package com.sachzhong.amusichub.client;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ArpeggioRandomGenerateUtil;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MelodyRandomGenerateUtil;
+import com.sachzhong.service.ArpeggioGenerateService;
+import com.sachzhong.service.ChordGenerateService;
+import com.sachzhong.service.MelodyRandomGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -31,9 +31,9 @@ public class PianoDemo {
 		//和声走向  1-6-4-5
 		String Chord_String = "I VI IV V ";
 		//初始化和弦生成工具
-		ChordUtil chordUtil =new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		//根据和弦走向和基调生成和弦
-		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "C", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "Dmin", yinyu);
 		 //获得和弦数组
 		Chord[] chords=cp.getChords();
 		
@@ -46,10 +46,10 @@ public class PianoDemo {
 
 		
 		//旋律生成工具
-		MelodyRandomGenerateUtil melodyGenerateUtil = new MelodyRandomGenerateUtil();
+		MelodyRandomGenerateService melodyGenerateUtil = new MelodyRandomGenerateService();
 		
 		//琶音生成工具
-		ArpeggioRandomGenerateUtil arpeggioGenerateUtil = new ArpeggioRandomGenerateUtil();
+		ArpeggioGenerateService arpeggioGenerateService = new ArpeggioGenerateService();
 
 		
 		//循环10遍
@@ -86,10 +86,10 @@ public class PianoDemo {
 					pianoMelody.add(melodyGenerateUtil.getMelody(chords[k], yinyu+2));
 
 				} else if (randomInt == 2) {
-					pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k]));
+					pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k]));
 
 				} else if (randomInt == 3) {
-					pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k]));
+					pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k]));
 
 				}
 				

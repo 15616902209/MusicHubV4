@@ -1,4 +1,4 @@
-package com.sachzhong.util;
+package com.sachzhong.service;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.theory.Chord;
@@ -11,7 +11,7 @@ import org.jfugue.theory.Note;
 过渡音生成工具
  * 
  */
-public class TransitionRandomGenerateUtil {
+public class TransitionGenerateService {
 
 	// 过渡音生成工具
 	public Pattern getTransition(Chord chord) {

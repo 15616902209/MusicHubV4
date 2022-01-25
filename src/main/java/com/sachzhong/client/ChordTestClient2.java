@@ -3,9 +3,9 @@ package com.sachzhong.client;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MusicPaiUtil;
-import com.sachzhong.util.NoteGenerateUtil;
+import com.sachzhong.service.ChordGenerateService;
+import com.sachzhong.service.MusicPaiService;
+import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -29,27 +29,27 @@ public class ChordTestClient2 {
 		int yinyu = 4;
 		
 		//和声
-		ChordUtil chordUtil =new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp=chordUtil.getChordProgression("VI IV I V", "Amin", yinyu);
 
 		Chord[] chords=cp.getChords();
 
 		Pattern song=new Pattern();
-		NoteGenerateUtil noteGenerateUtil =new NoteGenerateUtil();
+		NoteGenerateService noteGenerateService =new NoteGenerateService();
 
 		//旋律音轨
 		Pattern melodyPattern=new Pattern();
 		//和弦音轨
 		Pattern chordPattern=new Pattern();
 
-		MusicPaiUtil musicPai = new MusicPaiUtil();
+		MusicPaiService musicPai = new MusicPaiService();
 		for (int k =0;k<10;k++){
 			for (int i = 0; i < chords.length; i++) {
 
 				Chord  chord=chords[i];
 				List<String> jiezou=musicPai.getPai();
 				for (int j = 0; j < jiezou.size(); j++) {
-					String	node= noteGenerateUtil.getNote(chord);
+					String	node= noteGenerateService.getNote(chord);
 					node+=jiezou.get(j);
 					melodyPattern.add(node);
 				}

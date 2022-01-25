@@ -200,10 +200,8 @@ public class GenerateSong {
 		//保存音乐
 		public void SaveSong()
 		{
-			//保存地址
-			String saveurl="D://歌词音乐.mid";
 			//保存
-			MusicSaveThread musicUtil=new MusicSaveThread(song, saveurl);
+			MusicSaveThread musicUtil=new MusicSaveThread(song, "歌词音乐");
 			musicUtil.start();
 		}
 		

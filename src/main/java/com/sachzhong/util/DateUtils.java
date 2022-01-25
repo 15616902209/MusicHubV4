@@ -5,6 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author SachZhong
+ * @date 2022/1/25 18:27
+ * @info 日期处理工具
+ */
 public class DateUtils {
 
 	/** 年-月-日 时:分:秒 显示格式 */
@@ -108,7 +113,6 @@ public class DateUtils {
 	 * @param: @return
 	 */
 	public static Timestamp getTimestamp() {
-		return new Timestamp(new Date().getTime());
+		return new Timestamp(System.currentTimeMillis());
 	}
 }
-// 待补充

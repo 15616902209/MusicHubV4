@@ -1,18 +1,17 @@
-package com.sachzhong.util;
+package com.sachzhong.factory;
 
 import org.jfugue.pattern.Pattern;
 
 /**
-*  作者： SachZhong 钟盛勤
-*  项目名：MusicHubV2
-*  版本： 1.0
-*  创建时间：2020年2月10日 下午2:52:31
-*  类名：BassGenerateUtil.java
-*  类说明：
-*/
-public class BassGenerateUtil {
-	
-	//贝斯音轨
+ * @author SachZhong
+ * @date 2022/1/25 18:18
+ * @info 贝斯生成工具
+ */
+public class BassGenerate {
+
+	/**
+	 * 贝斯音轨
+	 */
 	private  Pattern bassPattern;
 	
 	

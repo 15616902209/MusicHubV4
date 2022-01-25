@@ -1,4 +1,4 @@
-package com.sachzhong.util;
+package com.sachzhong.service;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.rhythm.Rhythm;
@@ -15,7 +15,7 @@ import java.util.List;
 *  类名：MusicGenerateUtil.java
 *  类说明：音乐生成工具类
 */
-public class MusicGenerateUtil {
+public class MusicGenerateService {
 	
 	//总轨
 	private  Pattern[] patterns=new Pattern[4];
@@ -37,11 +37,11 @@ public class MusicGenerateUtil {
 	//音符变量
 	private String node="C";
 	//音符生成工具
-	private NoteGenerateUtil noteGenerateUtil=new NoteGenerateUtil();
+	private NoteGenerateService noteGenerateService =new NoteGenerateService();
 	//旋律生成工具
-	private MelodyGenerateUtil melodyGenerateUtil=new MelodyGenerateUtil();
+	private MelodyGenerateService melodyGenerateService =new MelodyGenerateService();
 	//节奏拍生成工具
-	private MusicPaiUtil musicPai = new MusicPaiUtil();
+	private MusicPaiService musicPai = new MusicPaiService();
 	
 	//根据根音随机生成N小节的音乐
 	public Pattern[] generateMusic(String chordRoot,int yinyu,int n)
@@ -67,7 +67,7 @@ public class MusicGenerateUtil {
 				else
 				{
 					//根据和弦根音随机获取音符
-					node=noteGenerateUtil.getNode(chordRoot, yinyu);
+					node= noteGenerateService.getNode(chordRoot, yinyu);
 					node+=jiezou.get(j);
 				}
 				
@@ -75,7 +75,7 @@ public class MusicGenerateUtil {
 				
 				//吉他音轨随机获取音符
 				//根据和弦根音随机获取音符
-				node=noteGenerateUtil.getNode(chordRoot, yinyu-1);
+				node= noteGenerateService.getNode(chordRoot, yinyu-1);
 				node+=jiezou.get(j);
 				guitarPattern.add(node);
 				
@@ -134,7 +134,7 @@ public class MusicGenerateUtil {
 					else
 					{
 						//根据和弦根音随机获取音符
-						node=noteGenerateUtil.getNode(chordRoot, yinyu-1);
+						node= noteGenerateService.getNode(chordRoot, yinyu-1);
 						node+=jiezou.get(j);
 					}
 					
@@ -142,7 +142,7 @@ public class MusicGenerateUtil {
 					
 					//吉他音轨随机获取音符
 					//根据和弦根音随机获取音符
-					node=noteGenerateUtil.getNode(chordRoot, yinyu);
+					node= noteGenerateService.getNode(chordRoot, yinyu);
 					node+=jiezou.get(j);
 					guitarPattern.add(node);
 					
@@ -233,7 +233,7 @@ public class MusicGenerateUtil {
 						else
 						{
 							//根据和弦根音随机获取音符
-							node=noteGenerateUtil.getChordNote(chord).toString();
+							node= noteGenerateService.getChordNote(chord).toString();
 							node+=jiezou.get(j);
 						}
 						
@@ -257,7 +257,7 @@ public class MusicGenerateUtil {
 					}
 					
 					
-					guitarPattern.add(melodyGenerateUtil.getMelodyBylichade(chord, yinyu)+"|");
+					guitarPattern.add(melodyGenerateService.getMelodyBylichade(chord, yinyu)+"|");
 					
 					melodyPattern.add("|");
 					bassPattern.add("|");
@@ -303,7 +303,7 @@ public class MusicGenerateUtil {
 				
 				for (int j = 0; j < pai.length; j++) {
 
-					node = noteGenerateUtil.getChinaNote();
+					node = noteGenerateService.getChinaNote();
 					//System.out.println("node1:"+node);
 					if (j == 0) {
 						String firstnode = new String(node);
@@ -321,7 +321,7 @@ public class MusicGenerateUtil {
 						// node+=pai[j];
 
 						// midnote=musicGenerate.generateXiaoJie(firstnode,yinyu-1).toString();
-						midnote = melodyGenerateUtil.generateMelodyAll8(firstnode, yinyu - 1).toString();
+						midnote = melodyGenerateService.generateMelodyAll8(firstnode, yinyu - 1).toString();
 						// midnote=musicGenerate.getNodeListBylichade(firstnode,yinyu-1).toString();
 						guitarPattern.add(midnote);
 						
@@ -383,7 +383,7 @@ public class MusicGenerateUtil {
 					String[] pai = musicPai.getPaiAll8();
 					//System.out.println(pai.length);
 					
-					String[]  mynodes= noteGenerateUtil.getChinaNote8(length);
+					String[]  mynodes= noteGenerateService.getChinaNote8(length);
 					
 					for (int j = 0; j < pai.length; j++) {
 

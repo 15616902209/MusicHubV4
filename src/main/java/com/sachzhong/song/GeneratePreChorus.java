@@ -3,7 +3,7 @@ package com.sachzhong.song;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.MusicGenerateUtil;
+import com.sachzhong.service.MusicGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.ChordProgression;
@@ -58,7 +58,7 @@ public class GeneratePreChorus {
 			//生成副歌前
 			public void generatePreChorus()
 			{
-				MusicGenerateUtil musicGenerate = new MusicGenerateUtil();
+				MusicGenerateService musicGenerate = new MusicGenerateService();
 				this.PreChorus=musicGenerate.getSongChina(this.gechi,this.yinyu);
 			}
 		

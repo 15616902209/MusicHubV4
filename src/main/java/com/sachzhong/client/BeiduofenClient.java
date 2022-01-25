@@ -1,12 +1,12 @@
 package com.sachzhong.client;
 
 import com.sachzhong.instruments.Instruments;
+import com.sachzhong.service.ChordGenerateService;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MelodyGenerateUtil;
-import com.sachzhong.util.MusicPaiUtil;
-import com.sachzhong.util.NoteGenerateUtil;
+import com.sachzhong.service.MelodyGenerateService;
+import com.sachzhong.service.MusicPaiService;
+import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -34,7 +34,7 @@ public class BeiduofenClient {
 		//String Chord_String = "I VI IV V ";
 		//String Chord_String = "VI IV V I";
 		String Chord_String = "VI IV I V";
-		ChordUtil chordUtil =new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "C", yinyu);
 		 
 		Chord[] chords=cp.getChords();
@@ -56,11 +56,11 @@ public class BeiduofenClient {
 		
 
 		//音符生成工具
-		NoteGenerateUtil noteGenerateUtil=new NoteGenerateUtil();
+		NoteGenerateService noteGenerateService =new NoteGenerateService();
 		//旋律生成工具
-		MelodyGenerateUtil melodyGenerateUtil = new MelodyGenerateUtil();
+		MelodyGenerateService melodyGenerateService = new MelodyGenerateService();
 		//音乐节奏生成工具
-		MusicPaiUtil musicPaiUtil =new MusicPaiUtil();
+		MusicPaiService musicPaiService =new MusicPaiService();
 		
 		
 		
@@ -87,11 +87,11 @@ public class BeiduofenClient {
 					drum.add("C2h");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu);
 						note2+=mylist2.get(j);
 						guitar.add(note2);
 
@@ -105,7 +105,7 @@ public class BeiduofenClient {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					guitar.add(melodyGenerateUtil.generateMelodyAll8(chordRoot, yinyu+1));
+					guitar.add(melodyGenerateService.generateMelodyAll8(chordRoot, yinyu+1));
 
 
 				}
@@ -119,11 +119,11 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist2.get(j);
 						guitar.add(note2);
 
@@ -143,7 +143,7 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2q");
 					
-					guitar.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu));
+					guitar.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
 
 
 				}
@@ -189,11 +189,11 @@ public class BeiduofenClient {
 					drum.add("C2h");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu-1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu-1);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
@@ -207,11 +207,11 @@ public class BeiduofenClient {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
@@ -231,11 +231,11 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
@@ -258,7 +258,7 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2q");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu));
+					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
 
 
 				}
@@ -293,11 +293,11 @@ public class BeiduofenClient {
 				chordRoot=chordRoot.substring(0, 1);
 				
 				//List<String> mylist =  musicPaiUtil.getPai();
-				List<String> mylist =  musicPaiUtil.getPai44();
+				List<String> mylist =  musicPaiService.getPai44();
 				for (int j = 0; j < mylist.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist.get(j);
 						musicbox.add(note2);
 						
@@ -320,8 +320,8 @@ public class BeiduofenClient {
 					drum.add("C3h");
 					
 					//violin.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu-1));
-					violin.add(melodyGenerateUtil.generateMelody(chordRoot, yinyu));
-					guitar.add(melodyGenerateUtil.generateMelody(chordRoot, yinyu));
+					violin.add(melodyGenerateService.generateMelody(chordRoot, yinyu));
+					guitar.add(melodyGenerateService.generateMelody(chordRoot, yinyu));
 				}
 				else if(randomInt==1)
 				{
@@ -329,16 +329,16 @@ public class BeiduofenClient {
 					bass.add(chordRoot+"2w");
 					drum.add("C3w");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
 					}
-					guitar.add(melodyGenerateUtil.generateMelodyAll8(chordRoot, yinyu));
+					guitar.add(melodyGenerateService.generateMelodyAll8(chordRoot, yinyu));
 
 				}
 				else if(randomInt==2)
@@ -353,8 +353,8 @@ public class BeiduofenClient {
 					drum.add("C3q");
 					drum.add("C3h");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chords[k], yinyu+1));
-					guitar.add(melodyGenerateUtil.getMelodyBylichade(chords[k], yinyu+1));
+					violin.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu+1));
+					guitar.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu+1));
 
 				}
 				else if(randomInt==3)
@@ -372,8 +372,8 @@ public class BeiduofenClient {
 					drum.add("C3q");
 					drum.add("C3q");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chords[k], yinyu));
-					guitar.add(melodyGenerateUtil.getMelodyBylichade(chords[k], yinyu));
+					violin.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
+					guitar.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
 
 				}
 	
@@ -416,11 +416,11 @@ public class BeiduofenClient {
 					drum.add("C2h");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu+1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu+1);
 						note2+=mylist2.get(j);
 						violin.add(note2);
 
@@ -434,7 +434,7 @@ public class BeiduofenClient {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chords[k], yinyu));
+					violin.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
 
 
 				}
@@ -450,7 +450,7 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2h");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu+1));
+					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu+1));
 
 
 				}
@@ -469,7 +469,7 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2q");
 					
-					violin.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu));
+					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
 
 
 				}
@@ -511,11 +511,11 @@ public class BeiduofenClient {
 					drum.add("C2h");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu-1);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu-1);
 						note2+=mylist2.get(j);
 						guitar.add(note2);
 
@@ -529,7 +529,7 @@ public class BeiduofenClient {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					guitar.add(melodyGenerateUtil.getMelodyBylichade(chords[k], yinyu));
+					guitar.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
 
 
 				}
@@ -543,11 +543,11 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2h");
 					
-					List<String> mylist2 =  musicPaiUtil.getPai();
+					List<String> mylist2 =  musicPaiService.getPai();
 					for (int j = 0; j < mylist2.size(); j++) {
 
 						//复调
-						String note2=noteGenerateUtil.getNode(chordRoot, yinyu);
+						String note2= noteGenerateService.getNode(chordRoot, yinyu);
 						note2+=mylist2.get(j);
 						guitar.add(note2);
 
@@ -567,7 +567,7 @@ public class BeiduofenClient {
 					drum.add("C2q");
 					drum.add("C2q");
 					
-					guitar.add(melodyGenerateUtil.getMelodyBylichade(chordRoot, yinyu));
+					guitar.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
 
 
 				}

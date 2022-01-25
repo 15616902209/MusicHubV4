@@ -1,8 +1,8 @@
 package com.sachzhong.amusichub;
 
-import com.sachzhong.util.ArpeggioRandomGenerateUtil;
-import com.sachzhong.util.ChordUtil;
-import com.sachzhong.util.MelodyRandomGenerateUtil;
+import com.sachzhong.service.ArpeggioGenerateService;
+import com.sachzhong.service.ChordGenerateService;
+import com.sachzhong.service.MelodyRandomGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
@@ -26,15 +26,15 @@ public class MusicVerseImpl implements AGenerateMusic {
 		List<Pattern> patternList = new ArrayList<Pattern>();
 
 		// String Chord_String = "VI IV V I";
-		ChordUtil chordUtil = new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp = chordUtil.getChordProgression(chordpath, jidiao, yinyu);
 		Chord[] chords = cp.getChords();
 
 		// 旋律生成工具
-		MelodyRandomGenerateUtil melodyGenerateUtil = new MelodyRandomGenerateUtil();
+		MelodyRandomGenerateService melodyGenerateUtil = new MelodyRandomGenerateService();
 
 		// 琶音生成工具
-		ArpeggioRandomGenerateUtil arpeggioGenerateUtil = new ArpeggioRandomGenerateUtil();
+		ArpeggioGenerateService arpeggioGenerateService = new ArpeggioGenerateService();
 
 		// 生成主题
 
@@ -56,10 +56,10 @@ public class MusicVerseImpl implements AGenerateMusic {
 				pianoMelody.add(melodyGenerateUtil.getMelody(chords[k], yinyu + 2));
 
 			} else if (randomInt == 2) {
-				pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 3));
+				pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 3));
 
 			} else if (randomInt == 3) {
-				pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 1));
+				pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 1));
 
 			}
 
@@ -102,12 +102,12 @@ public class MusicVerseImpl implements AGenerateMusic {
 		List<Pattern> patternList = new ArrayList<Pattern>();
 
 		// String Chord_String = "VI IV V I";
-		ChordUtil chordUtil = new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp = chordUtil.getChordProgression(chordpath, jidiao, yinyu);
 		Chord[] chords = cp.getChords();
 
 		// 旋律生成工具
-		MelodyRandomGenerateUtil melodyGenerateUtil = new MelodyRandomGenerateUtil();
+		MelodyRandomGenerateService melodyGenerateUtil = new MelodyRandomGenerateService();
 
 		// 琶音生成工具
 		// ArpeggioRandomGenerateUtil arpeggioGenerateUtil = new
@@ -158,15 +158,15 @@ public class MusicVerseImpl implements AGenerateMusic {
 		List<Pattern> patternList = new ArrayList<Pattern>();
 
 		// String Chord_String = "VI IV V I";
-		ChordUtil chordUtil = new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp = chordUtil.getChordProgression(chordpath, jidiao, yinyu);
 		Chord[] chords = cp.getChords();
 
 		// 旋律生成工具
-		MelodyRandomGenerateUtil melodyGenerateUtil = new MelodyRandomGenerateUtil();
+		MelodyRandomGenerateService melodyGenerateUtil = new MelodyRandomGenerateService();
 
 		// 琶音生成工具
-		ArpeggioRandomGenerateUtil arpeggioGenerateUtil = new ArpeggioRandomGenerateUtil();
+		ArpeggioGenerateService arpeggioGenerateService = new ArpeggioGenerateService();
 
 		// 生成主题
 
@@ -188,10 +188,10 @@ public class MusicVerseImpl implements AGenerateMusic {
 				pianoMelody.add(melodyGenerateUtil.getMelody(chords[k], yinyu + 2));
 
 			} else if (randomInt == 2) {
-				pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 3));
+				pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 3));
 
 			} else if (randomInt == 3) {
-				pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 1));
+				pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 1));
 
 			}
 
@@ -222,15 +222,15 @@ public class MusicVerseImpl implements AGenerateMusic {
 		List<Pattern> patternList = new ArrayList<Pattern>();
 
 		// String Chord_String = "VI IV V I";
-		ChordUtil chordUtil = new ChordUtil();
+		ChordGenerateService chordUtil = new ChordGenerateService();
 		ChordProgression cp = chordUtil.getChordProgression(chordpath, jidiao, yinyu);
 		Chord[] chords = cp.getChords();
 
 		// 旋律生成工具
-		MelodyRandomGenerateUtil melodyGenerateUtil = new MelodyRandomGenerateUtil();
+		MelodyRandomGenerateService melodyGenerateUtil = new MelodyRandomGenerateService();
 
 		// 琶音生成工具
-		ArpeggioRandomGenerateUtil arpeggioGenerateUtil = new ArpeggioRandomGenerateUtil();
+		ArpeggioGenerateService arpeggioGenerateService = new ArpeggioGenerateService();
 
 		for (int k = 0; k < chords.length; k++) {
 
@@ -245,15 +245,15 @@ public class MusicVerseImpl implements AGenerateMusic {
 
 			if (randomInt == 0) {
 				pianoMelody.add("Rw");
-				guitarMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 2));
+				guitarMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 2));
 				
 			} else if (randomInt == 1) {
 				pianoMelody.add(melodyGenerateUtil.getMelody(chords[k], yinyu + 2));
-				guitarMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 1));
+				guitarMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 1));
 
 			} else if (randomInt == 2) {
-				pianoMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 1));
-				guitarMelody.add(arpeggioGenerateUtil.getArpeggio(chords[k], yinyu + 3));
+				pianoMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 1));
+				guitarMelody.add(arpeggioGenerateService.getArpeggio(chords[k], yinyu + 3));
 
 			} else if (randomInt == 3) {
 				guitarMelody.add("Rw");

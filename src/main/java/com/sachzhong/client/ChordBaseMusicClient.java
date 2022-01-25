@@ -1,14 +1,15 @@
 package com.sachzhong.client;
 import com.sachzhong.instruments.Instruments;
-import com.sachzhong.service.ChordGenerateService;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
+import com.sachzhong.service.ChordGenerateService;
 import com.sachzhong.service.MusicPaiService;
 import com.sachzhong.service.NoteGenerateService;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
+import org.jfugue.theory.Note;
 
 import java.util.List;
 
@@ -20,16 +21,16 @@ import java.util.List;
 *  类名：BaseMusicClient.java
 *  类说明：基础音乐客户端类
 */
-public class BaseMusicClient {
+public class ChordBaseMusicClient {
 	
 	public static void main(String[] args) {
 		
-		int speed = 92;
-		int yinyu = 4;
+		int speed = 67;
+		int yinyu = 3;
 		int n=10;
-
+		
 		ChordGenerateService chordUtil = new ChordGenerateService();
-		ChordProgression cp=chordUtil.getChordProgression("IV V III VI II V I", "A", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression("IV V III VI II V I", "F", yinyu);
 		 
 		Chord[] chords=cp.getChords();
 		
@@ -45,14 +46,13 @@ public class BaseMusicClient {
 			
 			for (int k = 0; k < chords.length; k++) {
 				
-				//List<String> mylist =  musicPaiUtil.getPai();
-				List<String> mylist =  musicPaiService.getPai44By16();
+				List<String> mylist =  musicPaiService.getPaiAll8List();
 				for (int i = 0; i < mylist.size(); i++) {
-						String chordRoot = chords[k].getRoot().toString();
-						chordRoot=chordRoot.substring(0, 1);
-						String note= noteGenerateService.getNode(chordRoot, yinyu);
-						note+=mylist.get(i);
-						guitar.add(note);
+					Note[] notes = chords[k].getNotes();
+					int index =  (int) Math.round(Math.random() * (notes.length-1));
+					String rootSong ="("+ notes[0] + "+" + notes[index]+")";
+				    	rootSong+=mylist.get(i);
+						guitar.add(rootSong);
 
 				}
 				guitar.add(" | ");
@@ -60,7 +60,7 @@ public class BaseMusicClient {
 		}
 		
 		
-		guitar.setVoice(0).setInstrument(Instruments.Guitar).setTempo(speed);
+		guitar.setVoice(0).setInstrument(Instruments.Piano).setTempo(speed);
 		
 		song.add(guitar);
 		System.out.println(song);
@@ -69,7 +69,7 @@ public class BaseMusicClient {
 		MusicPlayThread playThread=new MusicPlayThread(player1, song);
 		playThread.start();
 
-		MusicSaveThread saveThread=new MusicSaveThread(song, "guitar");
+		MusicSaveThread saveThread=new MusicSaveThread(song, "ChordBaseMusic");
 		saveThread.start();
 		
 		

@@ -3,7 +3,7 @@ package com.sachzhong.client;
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
-import com.sachzhong.util.BassGenerateUtil;
+import com.sachzhong.factory.BassGenerate;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
@@ -22,7 +22,7 @@ public class BassClient {
 		String[] chordPath=new String[]{"C","A","F","G"};
 		Pattern song=new Pattern();
 		
-		BassGenerateUtil bassGenerateUtil=new BassGenerateUtil();
+		BassGenerate bassGenerateUtil=new BassGenerate();
 		
 		Pattern bassPattern=bassGenerateUtil.getBass(chordPath, 3);
 		 
