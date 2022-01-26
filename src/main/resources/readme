@@ -36,6 +36,45 @@
 民族或音乐家个人的思想观念、审美理想、精神气质等内在特性的外部印记。
 曲风的形成是时代、民族或音乐家在对音乐的理解和实现上超越了幼稚阶段，摆脱了各种模式化的束缚，从而趋向或达到了成熟的标志。
 
+
+4.名词理论
+
+4.1 音符
+note 音符
+rest 休止符
+chord 和弦
+
+jfugue里用MusicString来表示曲谱。
+CDEFGAB分别代表：哆来咪发索拉西
+R代表 ：休止符
+sharp 升音符  用#表示
+flat 降音符  用b表示
+
+4.2 音阶
+octave 八度音阶
+
+4.3 音长
+duration 音长
+whole	w 整体
+half	h 半音
+quarter	q 四分音符
+eighth	i 八分音符
+sixteenth	s 16分音符
+thirty-second	t 3-2
+sixty-fourth	x 6-4
+one-twenty-eighth	o 1-12-8
+
+默认为 Q(quartar)， 表示四分之一符，
+还有 W(whole)，全音符，
+H(half)，半音符。
+其他如：1/8("i")、1/16("s")、1/32("t")、1/64("x")和1/128音值("n")。
+您能够通过在音值字符后面加上一个点(".")来表示一个点音值。
+
+4.5 乐器
+instrument 乐器
+默认: Piano
+
+
     public static final String[] MAJOR_KEY_SIGNATURES = new String[]{"Cb", "Gb", "Db", "Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#"};
     public static final String[] MINOR_KEY_SIGNATURES = new String[]{"Ab", "Eb", "Bb", "F", "C", "G", "D", "A", "E", "B", "F#", "C#", "G#", "D#", "A#"};
     public static final int KEYSIG_MIDPOINT = 7;
