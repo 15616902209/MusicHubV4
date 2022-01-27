@@ -25,12 +25,12 @@ public class ChordBaseMusicClient {
 	
 	public static void main(String[] args) {
 		
-		int speed = 67;
+		int speed = 96;
 		int yinyu = 3;
-		int n=10;
+		int n=2;
 		
 		ChordGenerateService chordUtil = new ChordGenerateService();
-		ChordProgression cp=chordUtil.getChordProgression("IV V III VI II V I", "F", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression("I VI IV V", "C", yinyu);
 		 
 		Chord[] chords=cp.getChords();
 		
@@ -43,16 +43,30 @@ public class ChordBaseMusicClient {
 		
 
 		for (int j = 0; j < n; j++) {
-			
 			for (int k = 0; k < chords.length; k++) {
 				
-				List<String> mylist =  musicPaiService.getPaiAll8List();
+				List<String> mylist =  musicPaiService.getPai44By4816();
 				for (int i = 0; i < mylist.size(); i++) {
 					Note[] notes = chords[k].getNotes();
 					int index =  (int) Math.round(Math.random() * (notes.length-1));
 					String rootSong ="("+ notes[0] + "+" + notes[index]+")";
 				    	rootSong+=mylist.get(i);
 						guitar.add(rootSong);
+
+				}
+				guitar.add(" | ");
+			}
+		}
+
+		for (int j = 0; j < n; j++) {
+			List<String> mylist =  musicPaiService.getPai44By4816();
+			for (int k = 0; k < chords.length; k++) {
+				NoteGenerateService notes = new NoteGenerateService();
+				for (int i = 0; i < mylist.size(); i++) {
+
+					String rootSong ="("+ chords[k].getRoot().toString() + "+" + notes.getRodomNote(chords[k])+")";
+					rootSong+=mylist.get(i);
+					guitar.add(rootSong);
 
 				}
 				guitar.add(" | ");

@@ -60,6 +60,14 @@ public class NoteGenerateService {
 		int index = (int) (Math.random() * mynotes.length);
 		return mynotes[index].toString();
 	}
+
+	// 根据和弦随机获取和弦内的音符
+	public String getRodomNote(Chord chord) {
+		List<String> list = this.getNotes(chord);
+		// 随机生成 和弦内的音符
+		int index = (int) (Math.random() * list.size());
+		return list.get(index);
+	}
 	
 	//根据和弦获取能用的音符列表
 	public List<String> getNotes(Chord chord)
@@ -72,7 +80,7 @@ public class NoteGenerateService {
 		
 		chordRoot=chordRoot.substring(0, 1);
 		
-		NoteList=this.getChordLists(chordRoot,yinyu+2);
+		NoteList=this.getChordLists(chordRoot,yinyu);
 		
 		Note[] notes=chord.getNotes();
 		for (int i = 0; i < notes.length; i++) {
