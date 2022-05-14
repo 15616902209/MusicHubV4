@@ -30,7 +30,7 @@ public class MarchClient {
 		
 		//和声
 		ChordGenerateService chordUtil = new ChordGenerateService();
-		ChordProgression cp=chordUtil.getChordProgression("I VI IV V ", "G", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression("VI I V II ", "G", yinyu);
 		 
 		Chord[] chords=cp.getChords();
 		

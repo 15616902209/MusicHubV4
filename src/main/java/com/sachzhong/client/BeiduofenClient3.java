@@ -2,11 +2,11 @@ package com.sachzhong.client;
 
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.service.ChordGenerateService;
-import com.sachzhong.thread.MusicPlayThread;
-import com.sachzhong.thread.MusicSaveThread;
 import com.sachzhong.service.MelodyGenerateService;
 import com.sachzhong.service.MusicPaiService;
 import com.sachzhong.service.NoteGenerateService;
+import com.sachzhong.thread.MusicPlayThread;
+import com.sachzhong.thread.MusicSaveThread;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -22,7 +22,7 @@ import java.util.List;
 *  类名：ChordTestClient.java
 *  类说明：贝多芬音乐
 */
-public class BeiduofenClient2 {
+public class BeiduofenClient3 {
 	
 
 	public static void main(String[] args) {
@@ -32,9 +32,9 @@ public class BeiduofenClient2 {
 		
 		//和声
 		//String Chord_String = "I VI IV V ";
-		String Chord_String = "I V II VI";
+		String Chord_String = "VI I V II";
 		ChordGenerateService chordUtil =new ChordGenerateService();
-		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "A", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "C", yinyu);
 		 
 		Chord[] chords=cp.getChords();
 		
@@ -122,7 +122,7 @@ public class BeiduofenClient2 {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					guitar.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
+					guitar.add(melodyGenerateService.generateMelody(chordRoot, yinyu));
 
 
 				}
@@ -231,7 +231,7 @@ public class BeiduofenClient2 {
 					drum.add("C2h");
 					drum.add("C2h");
 					
-					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
+					violin.add(melodyGenerateService.generateMelody(chordRoot, yinyu));
 
 
 				}
@@ -252,7 +252,7 @@ public class BeiduofenClient2 {
 		
 		//换和弦
 		Chord_String = "IV V III VI II V I";
-		cp=chordUtil.getChordProgression(Chord_String, "C", yinyu);
+		cp=chordUtil.getChordProgression(Chord_String, "G", yinyu);
 		chords=cp.getChords();
 		
 		
@@ -344,8 +344,8 @@ public class BeiduofenClient2 {
 					drum.add("C3q");
 					drum.add("C3q");
 					
-					violin.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu+1));
-					guitar.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu+1));
+					violin.add(melodyGenerateService.getMelody(chords[k], yinyu+1));
+					guitar.add(melodyGenerateService.getMelody(chords[k], yinyu+1));
 
 				}
 				else if(randomInt==3)
@@ -363,8 +363,8 @@ public class BeiduofenClient2 {
 					drum.add("C3q");
 					drum.add("C3q");
 					
-					violin.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
-					guitar.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
+					violin.add(melodyGenerateService.getMelody(chords[k], yinyu));
+					guitar.add(melodyGenerateService.getMelody(chords[k], yinyu));
 
 				}
 	
@@ -422,7 +422,7 @@ public class BeiduofenClient2 {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					violin.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
+					violin.add(melodyGenerateService.getMelody(chords[k], yinyu));
 
 
 				}
@@ -432,7 +432,7 @@ public class BeiduofenClient2 {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu+1));
+					violin.add(melodyGenerateService.generateMelody(chordRoot, yinyu+1));
 
 
 				}
@@ -442,7 +442,7 @@ public class BeiduofenClient2 {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					violin.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
+					violin.add(melodyGenerateService.generateMelody(chordRoot, yinyu));
 
 
 				}
@@ -500,7 +500,7 @@ public class BeiduofenClient2 {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					guitar.add(melodyGenerateService.getMelodyBylichade(chords[k], yinyu));
+					guitar.add(melodyGenerateService.getMelody(chords[k], yinyu));
 
 
 				}
@@ -528,7 +528,7 @@ public class BeiduofenClient2 {
 					bass.add(chordRoot+"2w");
 					drum.add("C2w");
 					
-					guitar.add(melodyGenerateService.getMelodyBylichade(chordRoot, yinyu));
+					guitar.add(melodyGenerateService.generateMelody(chordRoot, yinyu));
 
 
 				}
@@ -574,7 +574,7 @@ public class BeiduofenClient2 {
 		MusicPlayThread playThread=new MusicPlayThread(player1, song);
 		playThread.start();
 
-		MusicSaveThread saveThread=new MusicSaveThread(song, "beiduofen2");
+		MusicSaveThread saveThread=new MusicSaveThread(song, "beiduofen3");
 		saveThread.start();
 		
 	}

@@ -30,7 +30,7 @@ public class ChordTestClient2 {
 		
 		//和声
 		ChordGenerateService chordUtil = new ChordGenerateService();
-		ChordProgression cp=chordUtil.getChordProgression("VI IV I V", "Amin", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression("VI I V II", "Fmin", yinyu);
 
 		Chord[] chords=cp.getChords();
 
