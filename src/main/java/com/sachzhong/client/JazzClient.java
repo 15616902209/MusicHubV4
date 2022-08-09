@@ -30,7 +30,7 @@ public class JazzClient {
 		
 		//和声
 		ChordGenerateService chordUtil = new ChordGenerateService();
-		ChordProgression cp=chordUtil.getChordProgression("I VI IV V ", "C", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression("VI I V II ", "C", yinyu);
 		 
 		Chord[] chords=cp.getChords();
 		

@@ -36,6 +36,8 @@ public class RhythmGenerateService {
      */
     private String[] rhythmArr = new String[]{"O", "o", "S", "s", "^", "`", "*", "+", "X", "x"};
 
+    private String[] rhythmArr2 = new String[]{"O", "S", "^", "*", "X"};
+
     /**
      * 聆听鼓点
      */
@@ -61,7 +63,7 @@ public class RhythmGenerateService {
      */
     public Pattern getRhythm() {
         Pattern rhythmPattern = new Pattern();
-
+        rhythmStr = "";
         for (int i = 0; i < 32; i++) {
 
             //随机生成 鼓点
@@ -83,18 +85,20 @@ public class RhythmGenerateService {
      * @return
      */
     public Pattern getRhythm44() {
-        Pattern  rhythmPattern = new Pattern();
-        rhythmStr += rhythmArr[0];
-        rhythmStr+=".";
-        rhythmStr += rhythmArr[2];
-        rhythmStr+=".";
-        rhythmStr += rhythmArr[4];
-        rhythmStr+=".";
-        rhythmStr += rhythmArr[3];
+        Pattern rhythmPattern = new Pattern();
+        rhythmStr = "";
+        for (int i = 0; i < 32; i++) {
+
+            //随机生成 鼓点
+            int index = (int) (Math.random() * rhythmArr2.length);
+            //随机加入鼓点
+            rhythmStr += rhythmArr2[index];
+        }
 
         //加入鼓点
         rhythm.addLayer(rhythmStr);
         rhythmPattern.add(rhythm.getPattern());
+
         return rhythmPattern;
     }
 

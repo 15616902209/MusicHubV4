@@ -193,10 +193,8 @@ public class GenerateChorusSong {
 	//保存音乐
 	public void SaveSong()
 	{
-		//保存地址
-		String  saveurl="D://automusicsong.mid";
 		//保存
-		MusicSaveThread musicSaveThread=new MusicSaveThread(song, saveurl);
+		MusicSaveThread musicSaveThread=new MusicSaveThread(song, "automusicsong");
 		musicSaveThread.start();
 	}
 	

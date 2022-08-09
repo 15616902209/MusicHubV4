@@ -26,11 +26,11 @@ public class PianoClient {
 		 GenerateFactory generateFactory=new GenerateFactory();
 		 PianoGenerate pianoGenerate=generateFactory.getPianoGenerate();
 
-		int speed=92;
+		int speed=132;
 
 		 ChordGenerateService chordUtil = new ChordGenerateService();
 		
-		 ChordProgression cp=chordUtil.getChordProgression("VI IV V I", "C", 3);
+		 ChordProgression cp=chordUtil.getChordProgression("VI I V II", "A", 3);
 		 
 		 Chord[] chords=cp.getChords();
 		 

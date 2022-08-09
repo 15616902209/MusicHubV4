@@ -26,7 +26,7 @@ public class SongClient2 {
 	
 	public static void main(String[] args) {
 		
-		int speed = 66;
+		int speed = 102;
 		int yinyu = 4;
 		
 		//和声

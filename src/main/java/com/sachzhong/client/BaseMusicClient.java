@@ -29,6 +29,7 @@ public class BaseMusicClient {
 		int n=10;
 
 		ChordGenerateService chordUtil = new ChordGenerateService();
+//		ChordProgression cp=chordUtil.getChordProgression("IV V III VI II V I", "A", yinyu);
 		ChordProgression cp=chordUtil.getChordProgression("IV V III VI II V I", "A", yinyu);
 		 
 		Chord[] chords=cp.getChords();
