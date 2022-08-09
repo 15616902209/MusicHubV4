@@ -2,6 +2,7 @@ package com.sachzhong.amusichub.client;
 
 
 import com.sachzhong.instruments.Instruments;
+import com.sachzhong.service.MusicPaiService;
 import com.sachzhong.thread.MusicPlayThread;
 import com.sachzhong.thread.MusicSaveThread;
 import com.sachzhong.service.ArpeggioGenerateService;
@@ -11,6 +12,9 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
+import org.jfugue.theory.Note;
+
+import java.util.List;
 
 
 /**
@@ -25,15 +29,15 @@ public class PianoDemo {
 	public static void main(String[] args) {
 		
 		//速度
-		int speed = 120;
+		int speed = 67;
 		//音域
-		int yinyu = 4;
+		int yinyu = 3;
 		//和声走向  1-6-4-5
-		String Chord_String = "I VI IV V ";
+		String Chord_String = "VI IV V";
 		//初始化和弦生成工具
 		ChordGenerateService chordUtil = new ChordGenerateService();
 		//根据和弦走向和基调生成和弦
-		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "Dmin", yinyu);
+		ChordProgression cp=chordUtil.getChordProgression(Chord_String, "Amin", yinyu);
 		 //获得和弦数组
 		Chord[] chords=cp.getChords();
 		
@@ -51,7 +55,8 @@ public class PianoDemo {
 		//琶音生成工具
 		ArpeggioGenerateService arpeggioGenerateService = new ArpeggioGenerateService();
 
-		
+		MusicPaiService musicPaiService =new MusicPaiService();
+
 		//循环10遍
 		for (int i = 0; i < 20; i++) {
 			
@@ -63,18 +68,29 @@ public class PianoDemo {
 				int randomInt = (int) Math.round(Math.random() * 3);
 
 				//随机生成旋律
-				if (randomInt == 0) {
-					pianoChord.add(chords[k]+"w ");
-				} else if (randomInt == 1) {
-					pianoChord.add(chords[k]+"h "+chords[k]+"h ");
+//				if (randomInt == 0) {
+//					pianoChord.add(chords[k]+"w ");
+//				} else if (randomInt == 1) {
+//					pianoChord.add(chords[k]+"h "+chords[k]+"h ");
+//
+//				} else if (randomInt == 2) {
+//					pianoChord.add(chords[k]+"q "+chords[k]+"q "+chords[k]+"q "+chords[k]+"q ");
+//
+//				} else if (randomInt == 3) {
+//					pianoChord.add(chords[k]+"q Rq "+chords[k]+"q Rq ");
+//
+//				}
 
-				} else if (randomInt == 2) {
-					pianoChord.add(chords[k]+"q "+chords[k]+"q "+chords[k]+"q "+chords[k]+"q ");
-
-				} else if (randomInt == 3) {
-					pianoChord.add(chords[k]+"q Rq "+chords[k]+"q Rq ");
-
+				List<String> mylist =  musicPaiService.getPai44();
+				for (int j = 0; j < mylist.size(); j++) {
+					Note[] notes = chords[k].getNotes();
+					int index =  (int) Math.round(Math.random() * (notes.length-1));
+					String rootSong ="("+ notes[0] + "+" + notes[index]+")";
+					rootSong+=mylist.get(j);
+					pianoChord.add(rootSong);
 				}
+
+
 				
 				// 随机种子
 				randomInt = (int) Math.round(Math.random() * 3);
@@ -102,7 +118,7 @@ public class PianoDemo {
 		
 		
 		//设置和弦钢琴轨道
-		pianoChord.setVoice(0).setInstrument(Instruments.Piano).setTempo(speed);
+		pianoChord.setVoice(0).setInstrument(Instruments.ELECTRIC_PIANO).setTempo(speed);
 		//设置旋律钢琴轨道
 		pianoMelody.setVoice(1).setInstrument(Instruments.Piano).setTempo(speed);
 	
