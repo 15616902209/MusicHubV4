@@ -2,6 +2,7 @@ package com.sachzhong.art;
 
 import com.sachzhong.instruments.Instruments;
 import com.sachzhong.thread.MusicPlayThread;
+import com.sachzhong.thread.MusicSaveThread;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Chord;
@@ -25,13 +26,13 @@ public class BasePlayTest2 {
 
         List<Chord> chordList =new ArrayList<>();
 
-        Chord chordParam =new Chord(new Note("A"),Chord.MINOR_INTERVALS);
+        Chord chordParam =new Chord(new Note("A"),Chord.MINOR_SEVENTH_SIXTH_INTERVALS);
         chordList.add(chordParam);
-        chordParam =new Chord(new Note("B"),Chord.MINOR_INTERVALS);
+        chordParam =new Chord(new Note("B"),Chord.MINOR_SEVENTH_SIXTH_INTERVALS);
         chordList.add(chordParam);
-        chordParam =new Chord(new Note("E"),Chord.MAJOR_SEVENTH_INTERVALS);
+        chordParam =new Chord(new Note("E"),Chord.MAJOR_SEVENTH_SIXTH_INTERVALS);
         chordList.add(chordParam);
-        chordParam =new Chord(new Note("A"),Chord.MINOR_INTERVALS);
+        chordParam =new Chord(new Note("A"),Chord.MAJOR_SEVENTH_SIXTH_INTERVALS);
         chordList.add(chordParam);
 
         for (int j = 0; j < 8; j++) {
@@ -63,6 +64,9 @@ public class BasePlayTest2 {
         Player player1=new Player();
         MusicPlayThread playThread=new MusicPlayThread(player1, song);
         playThread.start();
+
+        MusicSaveThread saveThread=new MusicSaveThread(song, "小调KaNongBuild");
+        saveThread.start();
     }
 
 

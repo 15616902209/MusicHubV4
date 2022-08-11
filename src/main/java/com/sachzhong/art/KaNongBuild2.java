@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class KaNongBuild {
+public class KaNongBuild2 {
 
     public static void main(String[] args) {
 
@@ -69,7 +69,7 @@ public class KaNongBuild {
         ChordGenerateService chordGen =new ChordGenerateService();
 
         if (seq==0){
-            chordGen.buildFenJie(chordPattern,chord,1);
+            chordGen.buildFenJie(chordPattern,chord,0);
             chordGen.buildFenJie(melodyPattern,chord,0);
         }
         if (seq==1){

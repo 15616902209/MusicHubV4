@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class KaNongBuild {
+public class KaNongBuild3 {
 
     public static void main(String[] args) {
 
@@ -27,21 +27,23 @@ public class KaNongBuild {
 
         List<Chord> chordList =new ArrayList<>();
 
-        Chord chordParam =new Chord(new Note("C"),Chord.MAJOR_INTERVALS);
-        chordList.add(chordParam);
-        chordParam =new Chord(new Note("G"),Chord.MAJOR_INTERVALS);
-        chordList.add(chordParam);
-        chordParam =new Chord(new Note("A"),Chord.MINOR_INTERVALS);
+        Chord chordParam =new Chord(new Note("A"),Chord.MINOR_INTERVALS);
         chordList.add(chordParam);
         chordParam =new Chord(new Note("E"),Chord.MINOR_INTERVALS);
         chordList.add(chordParam);
+        chordParam =new Chord(new Note("A"),Chord.MINOR_INTERVALS);
+        chordList.add(chordParam);
         chordParam =new Chord(new Note("F"),Chord.MAJOR_INTERVALS);
         chordList.add(chordParam);
-        chordParam =new Chord(new Note("C"),Chord.MAJOR_INTERVALS);
+        chordParam =new Chord(new Note("E"),Chord.MAJOR_INTERVALS);
         chordList.add(chordParam);
         chordParam =new Chord(new Note("D"),Chord.MINOR_INTERVALS);
         chordList.add(chordParam);
-        chordParam =new Chord(new Note("G"),Chord.MAJOR_INTERVALS);
+        chordParam =new Chord(new Note("C"),Chord.MAJOR_INTERVALS);
+        chordList.add(chordParam);
+        chordParam =new Chord(new Note("B"),Chord.MINOR_INTERVALS);
+        chordList.add(chordParam);
+        chordParam =new Chord(new Note("E"),Chord.MAJOR_INTERVALS);
         chordList.add(chordParam);
 
         for (int j = 0; j < 8; j++) {
@@ -69,7 +71,7 @@ public class KaNongBuild {
         ChordGenerateService chordGen =new ChordGenerateService();
 
         if (seq==0){
-            chordGen.buildFenJie(chordPattern,chord,1);
+            chordGen.buildFenJie(chordPattern,chord,0);
             chordGen.buildFenJie(melodyPattern,chord,0);
         }
         if (seq==1){
